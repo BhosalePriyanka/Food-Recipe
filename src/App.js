@@ -1,8 +1,7 @@
-import logo from './logo.svg';
+
 import { useEffect , useState }  from 'react';
 import Recipe from './Recipe.js'
-import './App.css';
-
+import {Form,Button} from 'react-bootstrap'
 function App() {
 
 const APP_ID = "ff4fef2f";
@@ -38,13 +37,13 @@ setSearch(inputName);
 
   return (
     
-<div className="App">
-<form onSubmit={handleSearch} className="form">
-<input type="text" placeholder = "Enter recipe name" value = {inputName} onChange={handleInput}  />
-<button type = "submit">Submit</button>
-</form>
+<div>
+<Form onSubmit={handleSearch} className="w-50 mx-auto text-center">
+<Form.Control type="text" placeholder = "Enter recipe name" value = {inputName} onChange={handleInput}  />
+<Button>Submit</Button>
+</Form>
  
- <div className="content">
+ <div  className = "d-flex flex-wrap justify-content-center">
 
 {recipes.map(recipe =>(
 <Recipe 
@@ -56,8 +55,9 @@ title = {recipe.recipe.label}
 
 ))}
 </div>
-
 </div>
+
+
   );
 }
 
