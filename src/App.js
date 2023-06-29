@@ -17,6 +17,7 @@ const handleInput = (event) => {
 
 }
 
+
 useEffect(() =>{
 getRecipes();
 }, [search]);
@@ -25,6 +26,7 @@ getRecipes();
   fetch(`https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`)
     .then((response) => response.json())
      .then((data) => {
+      console.log(data);
        setRecipes(data.hits);
       });
   };
@@ -32,14 +34,13 @@ getRecipes();
 const handleSearch = () =>{
 setSearch(inputName);
 }; 
-console.log(search)
-console.log(inputName)
+
   return (
     
 <div>
-<Form onClick={handleSearch} className="w-50 mx-auto text-center">
+<Form  className="w-50 mx-auto text-center">
 <Form.Control type="text" placeholder = "Enter recipe name" value = {inputName} onChange={handleInput}  />
-<Button>Submit</Button>
+<Button onClick={handleSearch}>Submit</Button>
 </Form>
  
  <div  className = "d-flex flex-wrap justify-content-center">
