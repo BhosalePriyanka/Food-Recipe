@@ -25,20 +25,19 @@ getRecipes();
   fetch(`https://api.edamam.com/search?q=${search}&app_id=${APP_ID}&app_key=${APP_KEY}`)
     .then((response) => response.json())
      .then((data) => {
-      console.log(data);
        setRecipes(data.hits);
       });
   };
 
-const handleSearch = (e) =>{
-e.preventDefault();
+const handleSearch = () =>{
 setSearch(inputName);
 }; 
-
+console.log(search)
+console.log(inputName)
   return (
     
 <div>
-<Form onSubmit={handleSearch} className="w-50 mx-auto text-center">
+<Form onClick={handleSearch} className="w-50 mx-auto text-center">
 <Form.Control type="text" placeholder = "Enter recipe name" value = {inputName} onChange={handleInput}  />
 <Button>Submit</Button>
 </Form>
@@ -62,3 +61,4 @@ title = {recipe.recipe.label}
 }
 
 export default App;
+
